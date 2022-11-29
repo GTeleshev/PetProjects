@@ -1,7 +1,7 @@
 ﻿// Pi calculation using Nilakantha Series π=3+4/(2·3·4)-4/(4·5·6)+4/(6·7·8)-4/(8·9·10)+4/(10·11·12)-4/(12·13·14) ⋯
 
 Console.WriteLine(PiCalc(1000000));
-Console.WriteLine(PiCalcPrecision(20));
+Console.WriteLine(PiCalcPrecision(10));
 
 decimal PiCalc(int number_of_iterations = 1)
 {
@@ -26,7 +26,7 @@ string PiCalcPrecision(int precision = 1)
     int i = 1;
     decimal add1 = 0.1M;
     decimal add2 = 0M;
-    while (Math.Round(Math.Abs(add1 - add2), precision) > 0)
+    while (Math.Abs(add1 - add2) > Convert.ToDecimal(1 / Math.Pow(10, precision)))
     {
         add1 = add2;
         decimal doubleI = 2 * i;
