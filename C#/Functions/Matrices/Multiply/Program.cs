@@ -1,7 +1,7 @@
 ﻿/*Matrices multiplication*/
-int sogl = 4;
-double[,] firstMatrix = GetArray(4, sogl, 1, 5);
-double[,] secondMatrix = GetArray(sogl, 1, 1, 5);
+int sogl = 5;
+double[,] firstMatrix = GetArray(4, sogl, 1, 9);
+double[,] secondMatrix = GetArray(sogl, 4, 1, 9);
 double[,] multi = MatrixMultiply(firstMatrix, secondMatrix);
 Console.WriteLine("First matrix");
 PrintArray(firstMatrix);
