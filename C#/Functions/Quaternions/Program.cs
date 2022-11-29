@@ -1,4 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// Quaternions as 4x4 Matrices - Connections to Linear Algebra
+// https://www.youtube.com/watch?v=3Ki14CsP_9k
 
 
 Console.WriteLine("Quaternion Class Check");
