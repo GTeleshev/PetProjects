@@ -1,25 +1,14 @@
-﻿/* Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
-Например, даны 2 матрицы:
-2 4 | 3 4
-3 2 | 3 3
-Результирующая матрица будет:
-18 20
-15 18 */
+﻿/*Matrices multiplication*/
 int sogl = 4;
 double[,] firstMatrix = GetArray(4, sogl, 1, 5);
 double[,] secondMatrix = GetArray(sogl, 1, 1, 5);
 double[,] multi = MatrixMultiply(firstMatrix, secondMatrix);
-Console.WriteLine();
+Console.WriteLine("First matrix");
 PrintArray(firstMatrix);
-Console.WriteLine();
+Console.WriteLine("Second matrix");
 PrintArray(secondMatrix);
-Console.WriteLine();
+Console.WriteLine("Result of multiplication");
 PrintArray(multi);
-
-Console.WriteLine(multi[0,0]);
-Console.WriteLine(multi[1,0]);
-Console.WriteLine(multi[2,0]);
-Console.WriteLine(multi[3,0]);
 
 double[,] MatrixMultiply(double[,] Matrix1, double[,] Matrix2)
 {
@@ -43,15 +32,6 @@ double[,] MatrixMultiply(double[,] Matrix1, double[,] Matrix2)
     }
     return multipliedMatrix;
 }
-
-/* Операция умножения двух матриц выполнима только в том случае, 
-если число столбцов в первом сомножителе равно числу строк во втором; 
-в этом случае говорят, что матрицы согласованы. В частности, умножение 
-всегда выполнимо, если оба сомножителя — квадратные матрицы одного и 
-того же порядка.
- */
-
-
 
 double[,] GetArray(int m, int n, int minValue, int maxValue)
 {
