@@ -1,30 +1,26 @@
 ﻿// Quaternions as 4x4 Matrices - Connections to Linear Algebra
 // https://www.youtube.com/watch?v=3Ki14CsP_9k
-
-
 Console.WriteLine("Quaternion Class Check");
 Quaternion quater = new Quaternion(1, 2, 3, -4);
-// string name = Quaternion.PrintQ(quater);
-Console.WriteLine(quater.a);
-Console.WriteLine(quater.b);
-Console.WriteLine(quater.c);
-Console.WriteLine(quater.d);
-// Console.WriteLine(quater.PrintQ());
 Console.WriteLine(quater.PrintQ());
-Console.ReadLine();
 Quaternion quater2 = new Quaternion(1, 3, 5, 6);
 Console.WriteLine(quater2.PrintQ());
 Quaternion quater3 = quater.QuatAdd(quater2);
 Console.WriteLine(quater3.PrintQ());
 Quaternion quater4 = quater.MultiplyQuat(quater2);
 Console.WriteLine(quater4.PrintQ());
+quater2 = quater4.MultiplyQuat(quater);
+Console.WriteLine(quater2.PrintQ());
+
+Quaternion[] quaterArray = {quater, quater2, quater3, quater4};
+Console.WriteLine(quaterArray[0].PrintQ());
+
 public class Quaternion
 {
     public double a { get; set; }
     public double b { get; set; }
     public double c { get; set; }
     public double d { get; set; }
-
     public Quaternion()
     {
         this.a = 0;
@@ -32,7 +28,6 @@ public class Quaternion
         this.c = 0;
         this.d = 0;
     }
-
     public Quaternion(double A, double B, double C, double D)
     {
         this.a = A;
@@ -40,7 +35,6 @@ public class Quaternion
         this.c = C;
         this.d = D;
     }
-
     public string PrintQ()
     {
         string fs = "+";
@@ -64,13 +58,11 @@ public class Quaternion
         string quaternString = $"{this.a} {fs} {absB}i {ss} {absC}j {ts} {absD}k";
         return quaternString;
     }
-
     public Quaternion QuatAdd(Quaternion quat2)
     {
         Quaternion sumQuat = new Quaternion(this.a + quat2.a, this.b + quat2.b, this.c + quat2.c, this.d + quat2.d);
         return sumQuat;
     }
-
     public Quaternion MultiplyQuat(Quaternion quat2)
     {
         Quaternion productQuat = new Quaternion();
@@ -87,13 +79,16 @@ public class Quaternion
             {quat2.d}
         };
         double[,] productMatrix = MatrixMultiply(firstMatrix, secondMatrix);
-        productQuat.a = productMatrix[0,0];
-        productQuat.b = productMatrix[1,0];
-        productQuat.c = productMatrix[2,0];
-        productQuat.d = productMatrix[3,0];
-        
+        productQuat.a = productMatrix[0, 0];
+        productQuat.b = productMatrix[1, 0];
+        productQuat.c = productMatrix[2, 0];
+        productQuat.d = productMatrix[3, 0];
+
         return productQuat;
     }
+
+
+
     double[,] MatrixMultiply(double[,] Matrix1, double[,] Matrix2)
     {
         int rows1 = Matrix1.GetLength(0);
